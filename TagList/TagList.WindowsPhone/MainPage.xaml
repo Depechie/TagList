@@ -8,7 +8,37 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!--  TitlePanel  -->
+        <StackPanel x:Name="TitlePanel"
+                    Grid.Row="0"
+                    Margin="0,4.75,0,9.5">
+            <TextBlock Text="tag list"
+                       Margin="19,0,0,4.75"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       Typography.Capitals="SmallCaps" />
+        </StackPanel>
 
+        <!--  Content  -->
+        <Grid x:Name="ContentPanel"
+              Grid.Row="1"
+              Margin="19,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <Button Grid.Row="0" Click="Button_Click">add</Button>
+
+            <ScrollViewer Grid.Row="1">
+                <RichTextBlock  IsTextSelectionEnabled="False">
+                    <Paragraph x:Name="TagsDomains" />
+                </RichTextBlock>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </Page>
