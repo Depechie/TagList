@@ -3,10 +3,10 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 using TagList.Annotations;
+using TagList.Framework;
 using TagList.Models;
+using System.Linq;
 
 namespace TagList
 {
@@ -25,6 +25,20 @@ namespace TagList
                     return;
 
                 _tagList = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ObservableCollection<Tag> _selectedTags = new ObservableCollection<Tag>();
+        public ObservableCollection<Tag> SelectedTags
+        {
+            get { return _selectedTags; }
+            set
+            {
+                if (value == _selectedTags)
+                    return;
+
+                _selectedTags = value;
                 OnPropertyChanged();
             }
         }
@@ -50,6 +64,10 @@ namespace TagList
             this.TagList.Add(new Tag() { Id = "7", Label = "Windows 8" });
             this.TagList.Add(new Tag() { Id = "8", Label = "Windows 8.1" });
             this.TagList.Add(new Tag() { Id = "9", Label = "Windows 10" });
+            this.TagList.Add(new Tag() { Id = "10", Label = "Windows Whatever the name will be" });
+
+            foreach (Tag item in General.GetInstance().TagSelection.Tags)
+                this.SelectedTags.Add(this.TagList.Single(tag => tag.Id.Equals(item.Id)));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -63,8 +81,7 @@ namespace TagList
 
         private void AppBarButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var t = this.TagListView.SelectedItems;
-
+            General.GetInstance().TagSelection.Tags = this.TagListView.SelectedItems.Cast<Tag>().ToList();
             this.Frame.GoBack();
         }
     }

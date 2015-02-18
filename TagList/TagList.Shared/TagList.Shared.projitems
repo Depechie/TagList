@@ -15,6 +15,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ListViewExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Framework\General.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Tag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\TagSelection.cs" />
   </ItemGroup>
 </Project>

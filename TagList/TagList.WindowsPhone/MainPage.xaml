@@ -35,7 +35,7 @@
             <Button Grid.Row="0" Click="Button_Click">add</Button>
 
             <ScrollViewer Grid.Row="1">
-                <RichTextBlock  IsTextSelectionEnabled="False">
+                <RichTextBlock  IsTextSelectionEnabled="False" x:Name="TagRichTextBlock">
                     <Paragraph x:Name="TagsDomains" />
                 </RichTextBlock>
             </ScrollViewer>
