@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="TagList.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TagList"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!--  TitlePanel  -->
+        <StackPanel x:Name="TitlePanel"
+                    Grid.Row="0"
+                    Margin="0,4.75,0,9.5">
+            <TextBlock Text="tag list"
+                       Margin="19,0,0,4.75"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       Typography.Capitals="SmallCaps" />
+        </StackPanel>
+
+        <!--  Content  -->
+        <Grid x:Name="ContentPanel"
+              Grid.Row="1"
+              Margin="19,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" Click="Button_Click">add</Button>
+
+            <ScrollViewer Grid.Row="1">
+                <RichTextBlock IsTextSelectionEnabled="False" x:Name="TagRichTextBlock">
+                    <Paragraph x:Name="TagsDomains" />
+                </RichTextBlock>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>
